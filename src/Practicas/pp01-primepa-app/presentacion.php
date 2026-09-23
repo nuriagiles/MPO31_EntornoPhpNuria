@@ -19,7 +19,12 @@
         <style>
             *{
                 margin: 0%;
-                padding: 0%;
+                padding: 0%;                
+            }
+            body{
+                min-height: 100vh;
+                display: grid;
+                grid-template-rows: auto 1fr auto;
             }
             h1{
                 text-align: center;
@@ -37,7 +42,6 @@
             }
             main{
                 margin-top: 50px;
-                margin-bottom: 500px;
                 justify-items: center;
             }
             .img-perfil{
@@ -59,7 +63,7 @@
                 color: #FDFFFF;
                 padding: 20px 20px 20px 20px;
                 text-align: center;
-                margin-top: auto;
+                
             }
         </style>
     </head>
