@@ -23,9 +23,12 @@
         .container {
             width: 600px;
             height: 400px;
-            border: 1px solid black;
+            border: 1px solid #DDDEE2;
             border-top-left-radius: 11px;
             border-top-right-radius: 11px;
+            border-bottom-left-radius: 11px;
+            border-bottom-right-radius: 11px;
+                        
         }
         .title-container{
             width: 578px;
@@ -36,6 +39,17 @@
             background-color: #212121;
             color: #FFFFFF;
         }
+
+        .partido1-div{
+            background-color: #FAFAFA;
+            border: 1px solid #DDDEE2;
+            height: 150px;
+        }
+
+        .partido2-div{
+            background-color: #FFFFFF;
+            border: 1px solid #DDDEE2;
+        }
     </style>
 </head>
 <body>
@@ -44,17 +58,17 @@
            <h1><?= $Equipo1 ?> contra <?= $Equipo2 ?></h1> 
         </div>
         
-        <div>
+        <div class="partido1-div">
             <div>
 
             </div>
             <div></div>
         </div>
-        <div>
+        <div class="partido2-div">
             <div></div>
             <div></div>
         </div>
-        <div>
+        <div class="partido3-div">
             <div></div>
             <div></div>
         </div>
