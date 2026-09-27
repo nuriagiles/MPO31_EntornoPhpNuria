@@ -57,7 +57,10 @@
             <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex2.php">Ex2.php</a></div>
             <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex3.php">Ex3.php</a></div>
         </div>
-    </ul>
-
+    <h2>Mini retos</h2>
+    <h3>Mini-reto1</h3>
+    <div class="teoria-container espacio">
+        <div class="teoria-tarjetas"><a href="Practicas/Mini-reto1/Exercici1.php">Mini-reto1</a></div>
+    </div>
 </body>
 </html>
