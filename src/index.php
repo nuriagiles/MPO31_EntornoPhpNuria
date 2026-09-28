@@ -56,6 +56,8 @@
             <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex1.php">Ex1.php</a></div>
             <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex2.php">Ex2.php</a></div>
             <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex3.php">Ex3.php</a></div>
+            <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex4.php">Ex4.php</a></div>
+            <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex5.php">Ex5.php</a></div>
         </div>
     <h2>Mini retos</h2>
     <h3>Mini-reto1</h3>
