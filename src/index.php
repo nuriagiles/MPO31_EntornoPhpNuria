@@ -13,7 +13,7 @@
             min-height: 100vh;
             display: grid;
             grid-template-rows: auto 1fr auto;
-
+            background-color: #264b6e;
         }
         /*Header*/
         header{
@@ -55,7 +55,24 @@
         .espacio{
             margin-bottom: 100px;
         }
+        .Indice{
+            text-align: center;
+            background-image: url('Practicas/Mini-reto1/img/indice.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 900px;
+            height: 350px;
+            color: white;
+            align-content: center;
+            margin-bottom: 50px;
+            border-radius: 10px;
+            filter: brightness(90%);
 
+        }
+        .teoria-titulo{
+            color: white;
+            
+        }
     </style>
 </head>
 <body>
@@ -67,19 +84,22 @@
     </header>
 
     <main>
-        <h1>Indice - Nuria Giles</h1>
-        <h2>Teoria</h2>
+        <div class="Indice">
+            <h1>Indice - Nuria Giles</h1>            
+        </div>
+
+        <h2 class="teoria-titulo">Teoria</h2>
         <div class="teoria-container espacio">
             <div class="teoria-tarjetas"><a href="Teoria/sesion1/hola.php">Sesión 1 - php básico</a></div>
             <div class="teoria-tarjetas"><a href="Teoria/sesion2_bucles_condicionales">Sesión 2 - bucles y condicionales</a></div>
             <div class="teoria-tarjetas">Proximamente...</div>
         </div>
-        <h2>Practicas</h2>
-            <h3>PP01 - PRIMERA APP</h3>
+        <h2 class="teoria-titulo">Practicas</h2>
+            <h3 class="teoria-titulo">PP01 - PRIMERA APP</h3>
             <div class="teoria-container espacio">
                 <div class="teoria-tarjetas"><a href="Practicas/pp01-primera-app/presentacion.php">Presentacion.php</a></div>
             </div>
-            <h3>PP02-ESTRUCTURA DE BUCLES Y CONDICIONALES</h3>
+            <h3 class="teoria-titulo">PP02-ESTRUCTURA DE BUCLES Y CONDICIONALES</h3>
             <div class="teoria-container espacio">
                 <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex1.php">Ex1.php</a></div>
                 <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex2.php">Ex2.php</a></div>
@@ -87,7 +107,7 @@
                 <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex4.php">Ex4.php</a></div>
                 <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex5.php">Ex5.php</a></div>
             </div>
-        <h2>Mini retos</h2>
+        <h2 class="teoria-titulo">Mini retos</h2>
         <div class="teoria-container espacio">
             <div class="teoria-tarjetas"><a href="Practicas/Mini-reto1/Exercici1.php">Mini-reto1</a></div>
         </div>
