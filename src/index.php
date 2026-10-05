@@ -111,6 +111,7 @@
         <div class="teoria-container espacio">
             <div class="teoria-tarjetas"><a href="Practicas/Mini-reto1/Exercici1.php">Mini-reto1</a></div>
             <div class="teoria-tarjetas"><a href="Practicas/exercici02-panell-projectes/index.php">exercici02-panell-projectes</a></div>
+            <div class="teoria-tarjetas"><a href="Practicas/exercici03/index.php">exercici03</a></div>
         </div>
         
     </main>

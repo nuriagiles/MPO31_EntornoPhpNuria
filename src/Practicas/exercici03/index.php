@@ -1,10 +1,10 @@
 <?php 
     $Lista = ["PHP", "JavaScript", "CSS", "HTML", "Docker", "M0487", "M485"];
-    $Descripciones = [
+    $Colores = [
         "#BFDBFE", "#FEF3C7", "#CFFAFE", "#DCFCE7", 
         "#DDD6FE", "#FECACA", "#FBCFE8"
         ];
-    
+    $i = 0;
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +15,12 @@
     <title>Document</title>
 </head>
 <body>
-    <table>
-    <?php foreach($Lista as $elementos):?>
-            <tr style="background-color: <?= $Descripciones[$elementos]?>">
-                <th><?= $elementos?></th>
-            </tr>
+    <?php foreach($Lista as $elementos):?> 
+               
+            <div style="background-color: <?= $Colores[$i++]?>;">
+                <p><?= $elementos?></p>
+            </div>
+       
     <?php endforeach;?>
-    </table>
 </body>
 </html>
