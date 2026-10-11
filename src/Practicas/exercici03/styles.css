@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+}
+.tarjeta-body{
+    background-color: white;
+    width: 420px;    
+    height: 320px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 10px;
+    padding-left: 20px;
+    margin-top: 20px;
+    line-height: 35px;
+}
+img{
+    border-radius: 5px;
+    width: 200px;
+    margin-top: 20px;
+}
+.etiqueta-teconologia{
+    background-color: #F7F5FE;
+    width: 80px;
+    height: 30px;
+    padding: 2px 2px 2px 2px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 20px;
+    align-content: center;
+}
+.etiqueta-teconologia p{
+    margin: 0;
+}
+.Tarjetas-conceptos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+}
+header{
+
+}
+body{
+    background-color: #FAFBFD;
+    font-family: sans-serif;
+}
+.header-title{
+    background-color: #EAF4FE;
+    padding-left: 20px;
+    line-height: 30px;
+    padding: 20px;
+}
+.conceptos-destacados{
+    background-color: white;
+    width: 420px;    
+    height: 180px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-top: 20px;
+    line-height: 35px;
+}
+.flex{
+    display: flex;
+}
+.resumen-conceptos{
+    display: flex;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    gap: 10px;
+    justify-content: center;
+}
