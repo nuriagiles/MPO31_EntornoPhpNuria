@@ -1,3 +1,3 @@
 <footer>
-    <p>&copy; Todos los derechos reservados</p>
+    <p>&copy; Mercadona S.A. A46103834. Todos los derechos reservados</p>
 </footer>
