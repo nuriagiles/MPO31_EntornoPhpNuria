@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="login.php" method="POST" autocomplete="off"> 
                 <div class="mb-3">
                     <label for="username" class="form-label">Nom:</label>
-                    <input type="text" name="username" id="username" class="form-control" value="<?= isset($username) ? htmlspecialchars($username) : '' ?>" required>
+                    <input type="text" name="username" id="username" class="form-control" value="<?= isset($username) ? $username : '' ?>" required>
                 </div>
                 
                 <div class="mb-4">
