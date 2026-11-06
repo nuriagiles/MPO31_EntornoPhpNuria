@@ -6,16 +6,6 @@
 
     $_SESSION["Basura"] = $Basura;
     
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        if(isset($_POST["accion"]) == "organico"){
-            $Valor_eliminar = $_POST["accion"];
-
-            array_shift($_SESSION["Basura"]);
-
-            header("Location: index.php");
-            exit;
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +34,7 @@
         <div class="contenedor-basura">
             <?php
                 foreach ($_SESSION["Basura"] as $basura) {
-                    echo "<div class='basura' id='$basura'>$basura</div>";
+                    echo "<div class='basura' id='" . array_rand($_SESSION["Basura"]) . "'> " . array_rand($_SESSION["Basura"]) . "</div>";
                 }    
             ?>
         </div>
