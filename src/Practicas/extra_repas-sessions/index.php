@@ -7,12 +7,14 @@
     $_SESSION["Basura"] = $Basura;
     
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        if (isset($_POST["accion"]) == "organico") {
+        if(isset($_POST["accion"]) == "organico"){
             $Valor_eliminar = $_POST["accion"];
-            
-            unset($_SESSION["Basura"][$Valor_eliminar]);
+
+            array_shift($_SESSION["Basura"]);
+
+            header("Location: index.php");
+            exit;
         }
-        
     }
 ?>
 <!DOCTYPE html>
