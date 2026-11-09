@@ -108,6 +108,7 @@
                 <div class="teoria-tarjetas"><a href="Practicas/pp02-estructuras-bucles-condicionals/ex5.php">Ex5.php</a></div>
                 <div class="teoria-tarjetas"><a href="Practicas/pp03-llistes-simples-associativas-multidimensionals/index.php">Ex6.php</a></div>
                 <div class="teoria-tarjetas"><a href="Practicas/pp04-vamos-mercadona/inicio.php">Ex7.php</a></div>
+                <div class="teoria-tarjetas"><a href="Practicas/extra-repas-sessions/index.php">extra</a></div>
             </div>
         <h2 class="teoria-titulo">Mini retos</h2>
         <div class="teoria-container espacio">

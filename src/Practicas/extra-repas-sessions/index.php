@@ -1,11 +1,24 @@
 <?php   
-    $Basura = [ "plastico", "organico", "papel", "vidrio"];
-
     session_start();
-    include "funciones.php";
-
-    $_SESSION["Basura"] = $Basura;
     
+    
+    if (!isset($_SESSION["Basura"])) {
+        
+        $_SESSION["Basura"] = [ "plastico", "organico", "papel", "vidrio", "plastico", "papel" ];
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["accion"])){
+        $tipoAElminar = $_POST["accion"];
+       
+        foreach ($_SESSION["Basura"] as $index => $tipo) {
+            if ($tipo === $tipoAElminar) {
+                unset($_SESSION["Basura"][$index]); 
+                $_SESSION["Basura"] = array_values($_SESSION["Basura"]); 
+                break; 
+        }
+    }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,9 +46,13 @@
         <h1>Gestionar Reciclaje</h1>
         <div class="contenedor-basura">
             <?php
-                foreach ($_SESSION["Basura"] as $basura) {
-                    echo "<div class='basura' id='" . array_rand($_SESSION["Basura"]) . "'> " . array_rand($_SESSION["Basura"]) . "</div>";
-                }    
+                if (empty($_SESSION["Basura"])) {
+                    echo "<p>¡Has reciclado toda la basura!</p>";
+                } else {
+                    foreach ($_SESSION["Basura"] as $index => $basura) {
+                        echo "<div class='basura' id='basura-" . $index . "'>" . htmlspecialchars($basura) . "</div>";
+                    }
+                }
             ?>
         </div>
         <form action="index.php" method="POST">
