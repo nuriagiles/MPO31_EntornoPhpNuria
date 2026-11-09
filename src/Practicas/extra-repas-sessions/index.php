@@ -1,15 +1,21 @@
-<?php   
+<?php
+
+    //Iniciamos sesion
     session_start();
     
-    
+    //Si no existe el array basura, la creamos.
     if (!isset($_SESSION["Basura"])) {
-        
+        // Creamos un array con los tipos de basura, incluyendo duplicados y lo metemos dentro de sesion
         $_SESSION["Basura"] = [ "plastico", "organico", "papel", "vidrio", "plastico", "papel" ];
     }
 
+    //Si se ha enviado el formulario (POST) o si se ha hecho click en el boton de eliminar basura ($_POST[])
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["accion"])){
+
+        //metemos el valor recibido en tipoAEliminar
         $tipoAElminar = $_POST["accion"];
        
+        //Repasamos el array que esta dentro del array de sesion como index
         foreach ($_SESSION["Basura"] as $index => $tipo) {
             if ($tipo === $tipoAElminar) {
                 unset($_SESSION["Basura"][$index]); 
@@ -37,6 +43,9 @@
             height: 100px;
             border: 1px solid black;
         }
+        table, thead, td{
+            border: 1px solid black;
+        }
     </style>
 </head>
 <body>
@@ -50,7 +59,7 @@
                     echo "<p>¡Has reciclado toda la basura!</p>";
                 } else {
                     foreach ($_SESSION["Basura"] as $index => $basura) {
-                        echo "<div class='basura' id='basura-" . $index . "'>" . htmlspecialchars($basura) . "</div>";
+                        echo "<div class='basura' id='basura-" . $index . "'>" . $basura . "</div>";
                     }
                 }
             ?>
@@ -70,7 +79,12 @@
                     <th>Acción</th>
                 </tr>
             </thead>
-
+            <tbody>
+                <tr>
+                    <td>a</td>
+                    <td>a</td>
+                </tr>
+            </tbody>
         </table>
     </main>
     <?php  
