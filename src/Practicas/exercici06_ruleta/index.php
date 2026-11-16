@@ -1,87 +1,6 @@
 <?php
 session_start();
 
-//Inicializar el historial si no existe
-if (!isset($_SESSION['historial'])) {
-    $_SESSION['historial'] = [];
-}
-
-//Array de las apuestas.
-$tablaApuestas = [
-    [
-        'apuesta' => 'Rojo/Negre', 
-        'descripcion' => 'Apostar si el número guanyador serà vermell o negre (excloent el 0).', 
-        'premio' => '1 x 1', 
-        'ejemplo' => 'Vermell / Negre'
-    ],
-    [
-        'apuesta' => 'Parell/Imparell', 
-        'descripcion' => 'Apostar si el número guanyador serà parell o imparell.', 
-        'premio' => '1 x 1', 
-        'ejemplo' => 'Parell / Imparell'
-    ],
-    [
-        'apuesta' => 'Pasa/Falta', 
-        'descripcion' => 'Apostar si el número estarà entre 1-18 (falta) o 19-36 (pasa).', 
-        'premio' => '1 x 1', 
-        'ejemplo' => 'Falta (1-18) / Pasa (19-36)'
-    ],
-    [
-        'apuesta' => 'Pleno', 
-        'descripcion' => 'Apostar a un número específic entre 0 i 36.', 
-        'premio' => '35 x 1', 
-        'ejemplo' => 'Número (0-36)'
-    ],
-    [
-        'apuesta' => 'Docena', 
-        'descripcion' => 'Apostar a una de les tres dotzenes (D1: 1-12, D2: 13-24, D3: 25-36).', 
-        'premio' => '2 x 1', 
-        'ejemplo' => 'D1, D2 o D3'
-    ],
-    [
-        'apuesta' => 'Columna', 
-        'descripcion' => 'Apostar a una de les tres columnes del tapet.', 
-        'premio' => '2 x 1', 
-        'ejemplo' => 'Columna 1, 2 o 3'
-    ],
-    [
-        'apuesta' => 'Dos docenes', 
-        'descripcion' => 'Apostar a dues docenes contigües (D1-D2 o D2-D3).', 
-        'premio' => '0.5 x 1', 
-        'ejemplo' => 'D1-D2 / D2-D3'
-    ],
-    [
-        'apuesta' => 'Dos columnes', 
-        'descripcion' => 'Apostar a dues columnes contigües.', 
-        'premio' => '0.5 x 1', 
-        'ejemplo' => 'C1-C2 / C2-C3'
-    ],
-    [
-        'apuesta' => 'Seisena', 
-        'descripcion' => 'Apostar a 6 números de dues files contigües.', 
-        'premio' => '5 x 1', 
-        'ejemplo' => 'Inici de fila (1, 7, etc.)'
-    ],
-    [
-        'apuesta' => 'Cuadro', 
-        'descripcion' => 'Apostar a quatre números que formen un quadrat al tapet.', 
-        'premio' => '8 x 1', 
-        'ejemplo' => 'Número base del quadrat'
-    ],
-    [
-        'apuesta' => 'Transversal', 
-        'descripcion' => 'Apostar a tres números d\'una mateixa fila.', 
-        'premio' => '11 x 1', 
-        'ejemplo' => 'Fila (1, 2, 3)'
-    ],
-    [
-        'apuesta' => 'Caballo', 
-        'descripcion' => 'Apostar a dos números adjacents en el tapet (horitzontal/vertical).', 
-        'premio' => '17 x 1', 
-        'ejemplo' => 'Dos números separats per coma (ex: 1,2)'
-    ]
-];
-
 //Generar numero aleatorio y color
 function generarRuleta() {
     $numeroAleatorio = rand(0, 36);
@@ -105,8 +24,6 @@ $error = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['netejar_historial'])) {
         $_SESSION['historial'] = [];
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit();
     }
 
     $tipoApuesta = $_POST['tipoApuesta'] ?? '';
@@ -127,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $ganada = false;
         $multiplicador = 0;
 
-        //El caso segun el tipo de apuesta
+        //El caso segun el tipo de apuesta, se calcula
         switch ($tipoApuesta) {
             case 'Rojo/Negre':
                 if (strtolower($valorApuesta) === strtolower($colorGanador)) { //Sirve para convertir todas las letras de un texto a minúsculas
@@ -253,6 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $premioTotal = $ganada ? ($cantidad * $multiplicador) : 0;
 
+        //METEMOS EL RESULTADO AL HISTORIAL
         $resultadoPartida = [
             'tipo' => $tipoApuesta,
             'valor' => $valorApuesta,
@@ -395,14 +313,78 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-700 text-sm">
-                        <?php foreach ($tablaApuestas as $fila): ?>
                             <tr class="hover:bg-slate-750 transition">
-                                <td class="p-3 font-semibold text-amber-400"><?php echo $fila['apuesta']; ?></td>
-                                <td class="p-3 text-slate-300"><?php echo $fila['descripcion']; ?></td>
-                                <td class="p-3 font-mono text-emerald-400"><?php echo $fila['premio']; ?></td>
-                                <td class="p-3 text-slate-400 italic"><?php echo $fila['ejemplo']; ?></td>
+                                <td>Rojo/Negro</td>
+                                <td>Se apuesta al color del número ganador, si será rojo o negro. Con esta apuesta se está jugando a 18 números, ya que hay 18 números rojos y 18 negros.</td>
+                                <td>1 x 1</td>
+                                <td>1</td>
                             </tr>
-                        <?php endforeach; ?>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Par/Impar</td>
+                                <td>Se apuesta a si el número donde cae la bola será par o impar. Con esta apuesta se está jugando a 18 números, bien a los 18 pares o impares.</td>
+                                <td>1 x 1</td>
+                                <td>2</td>
+                            </tr>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Pasa/Falta</td>
+                                <td>Se trata de apostar si el número estará entre 1-18 (falta) o 19-36 (pasa). Por tanto, se juega a 18 números.</td>
+                                <td>1 x 1</td>
+                                <td>3</td>
+                            </tr>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Docena</td>
+                                <td>Se apuesta a qué docena estará el número ganador. El tapete se divide en 3 docenas, cada una abarca 12 números. Se juega a 12 números.</td>
+                                <td>2 x 1</td>
+                                <td>4</td>
+                            </tr>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Columna</td>
+                                <td>Se apuesta a qué columna estará el número ganador. El tapete se divide en 3 columnas, cada una alberga 12 números. Se juega a 12 números.</td>
+                                <td>2 x 1</td>
+                                <td>5</td>
+                            </tr>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Dos docenas</td>
+                                <td>Se apuesta a dos docenas contiguas, es decir, se puede apostar a las docenas 1 y 2, o a las docenas 2 y 3. Se juega a 24 números.</td>
+                                <td>0,5 x 1</td>
+                                <td>6</td>
+                            </tr>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Dos columnas</td>
+                                <td>Se apuesta a dos columnas contiguas. Se puede apostar a las columnas 1 y 2 o a las columnas 2 y 3. Se juega a 24 números.</td>
+                                <td>0,5 x 1</td>
+                                <td>7</td>
+                            </tr>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Seisena</td>
+                                <td>Se apuesta a 6 números con una sola apuesta. Los 6 números están en dos filas contiguas.</td>
+                                <td>5 x 1</td>
+                                <td>8</td>
+                            </tr>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Cuadro</td>
+                                <td>Se apuesta a 4 números con una sola apuesta. Esta apuesta se realiza sobre 4 números que forman un cuadrado en el tapete.</td>
+                                <td>8 x 1</td>
+                                <td>9</td>
+                            </tr>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Transversal</td>
+                                <td>Se apuesta a 3 números en una fila. Existen dos variaciones: a los números 0, 1 y 2 o a 0, 2 y 3.</td>
+                                <td>11 x 1</td>
+                                <td>10, 11, 12</td>
+                            </tr>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Caballo</td>
+                                <td>Se apuesta a 2 números contiguos en el tapete de manera horizontal o vertical.</td>
+                                <td>17 x 1</td>
+                                <td>13, 14</td>
+                            </tr>
+                            <tr class="hover:bg-slate-750 transition">
+                                <td>Pleno</td>
+                                <td>Se apuesta a un solo número.</td>
+                                <td>35 x 1</td>
+                                <td>15</td>
+                            </tr>
                     </tbody>
                 </table>
             </div>
